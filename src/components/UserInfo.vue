@@ -1,6 +1,6 @@
 <template>
   <div class="info">
-    <h3 class="info-title">人员信息</h3>
+    <h2 class="info-title">人员信息</h2>
     <el-table
       :data="tableData3"
       style="width: 100%">

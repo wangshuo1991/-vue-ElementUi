@@ -3,37 +3,7 @@
     <Top></Top>
     <el-row class="container" width="100%">
       <el-col class="side-container">
-        <el-menu
-        background-color="#fff"
-        text-color="#333"
-        active-text-color="#f40"
-        router
-        default-active="1">
-          <el-menu-item index="/list">
-            <i class="el-icon-date"></i>
-            <span slot="title">员工列表</span>
-          </el-menu-item>
-
-          <el-menu-item index="2">
-            <i class="el-icon-menu"></i>
-            <span slot="title">套餐设置</span>
-          </el-menu-item>
-
-          <el-menu-item index="3">
-            <i class="el-icon-news"></i>
-            <span slot="title">家属预约</span>
-          </el-menu-item>
-
-          <el-menu-item index="4">
-            <i class="el-icon-document"></i>
-            <span slot="title">体检须知</span>
-          </el-menu-item>
-
-          <el-menu-item index="5">
-            <i class="el-icon-service"></i>
-            <span slot="title">客服帮助</span>
-          </el-menu-item>
-        </el-menu>
+        <Side></Side>
       </el-col>
 
       <el-col class="content-container" :span="20">
@@ -48,12 +18,14 @@
 </template>
 
 <script>
-import Top from '@/components/Top'
+import Top from '@/base/Top'
+import Side from '@/base/Side'
 
 export default {
   name: 'App',
   components: {
-    Top
+    Top,
+    Side
   }
 }
 </script>
@@ -76,12 +48,6 @@ export default {
       background: #fff;
       flex: 0 0 300px;
       border-right: 1px solid #e6e6e6;
-
-      .el-menu {
-        border-right: none;
-      }
-
-
     }
 
     .content-container {
