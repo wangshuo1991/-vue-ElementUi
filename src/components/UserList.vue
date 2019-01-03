@@ -54,7 +54,7 @@
 
             <el-button 
             size="small" 
-            type="primary" 
+            type="success" 
             icon="el-icon-edit" 
             circle 
             @click="handleEidt(scope.$index, scope.row)"
@@ -81,10 +81,33 @@
         </template>
 
       </el-table-column>
-      
+
     </el-table>
     <div class="page-container">
-      <Page :page="page"></Page>
+      <el-row :gutter="20">
+        <el-col :span="6">
+           <el-tooltip 
+           class="item" 
+           effect="dark" 
+           content="保存到本地" 
+           placement="bottom">
+
+            <el-button 
+            icon="el-icon-download"
+            size="small"
+            type="primary">
+            导出Excel
+            </el-button>
+
+           </el-tooltip>
+          
+        </el-col>
+
+        <el-col :span="12">
+          <Page :page="page"></Page>
+        </el-col>
+      </el-row>
+      
     </div>
     
   </div>
@@ -189,6 +212,7 @@ export default {
 
   .page-container {
     margin-top: 30px;
+    overflow: hidden;
   }
 }
 </style>

@@ -6,7 +6,7 @@
         router
         default-active='active'
         @select="handleSelect">
-        <el-menu-item index="/list">
+        <el-menu-item index="/userlist">
           <i class="el-icon-date"></i>
           <span slot="title">员工列表</span>
         </el-menu-item>
@@ -40,7 +40,7 @@ export default {
   props:{},
   data(){
     return {
-      active: '/list'
+      active: '/userlist'
     }
   },
   watch:{},

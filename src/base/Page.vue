@@ -1,15 +1,18 @@
 .<template>
   <div class="page-wrapper">
-    <div class="total-page">
-        共<span>{{ page.dataSum }}</span>条数据
-        共<span>{{ page.pageSum }}</span>页
-    </div>
+    
     <el-pagination
     class="pagination"
     background
     layout="prev, pager, next"
     :total="10">
     </el-pagination>
+
+    <div class="total-page">
+        共<span>{{ page.dataSum }}</span>条数据
+        共<span>{{ page.pageSum }}</span>页
+    </div>
+    
   </div>
 </template>
 
