@@ -67,11 +67,7 @@ export default {
 <style lang="scss" scoped>
 .detail-container{
 
-    .info-title {
-        padding: 20px 0;
-    }
-
-
+    
 
 }
 </style>

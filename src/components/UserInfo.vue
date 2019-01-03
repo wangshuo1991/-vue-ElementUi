@@ -4,44 +4,84 @@
     <el-table
       :data="tableData3"
       style="width: 100%">
+
        <el-table-column
         type="selection"
         width="55">
+
       </el-table-column>
       <el-table-column
         fixed
         prop="date"
         label="日期"
         width="200">
+
       </el-table-column>
       <el-table-column
         prop="name"
         label="姓名"
         width="140">
+
       </el-table-column>
       <el-table-column
         prop="gender"
         label="性别"
         width="140">
+
       </el-table-column>
       <el-table-column
         prop="age"
         label="年龄"
         width="140">
+
       </el-table-column>
       <el-table-column
         prop="state"
         label="预约状态"
         width="200">
+
       </el-table-column>
       <el-table-column
         prop="action"
         label="操作">
         <template slot-scope="scope">
-          <el-button size="small" type="primary" icon="el-icon-edit" circle @click="handleEidt(scope.$index, scope.row)"></el-button>
-          <el-button size="small" type="danger" icon="el-icon-delete" @click="handleDelete(scope.$index, scope.row)" circle></el-button>
+
+          <el-tooltip 
+          class="item" 
+          effect="dark" 
+          content="编辑信息" 
+          placement="top">
+
+            <el-button 
+            size="small" 
+            type="primary" 
+            icon="el-icon-edit" 
+            circle 
+            @click="handleEidt(scope.$index, scope.row)"
+            ></el-button>
+
+          </el-tooltip>
+          <el-tooltip 
+          class="item" 
+          effect="dark" 
+          content="删除信息" 
+          placement="top">
+
+            <el-button 
+            size="small" 
+            type="danger" 
+            icon="el-icon-delete" 
+            circle 
+            @click="handleDelete(scope.$index, scope.row)"
+            >
+            </el-button>
+
+          </el-tooltip>
+
         </template>
+
       </el-table-column>
+      
     </el-table>
     <div class="page-container">
       <Page :page="page"></Page>
@@ -146,10 +186,6 @@ export default {
 <style lang="scss" scoped>
 .info{
   overflow: auto;
-
-  .info-title {
-    padding: 20px 0;
-  }
 
   .page-container {
     margin-top: 30px;

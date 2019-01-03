@@ -2,9 +2,33 @@
   <div class="top-wrapper">
       <header>
         <div class="mid-header">
-          <a href="#">
-            {{ headerTitle }}
-          </a>
+          <el-row :gutter="20">
+
+            <el-col :span="6">
+              <a class="header-title" href="#">
+                {{ headerTitle }}
+              </a>
+            </el-col>
+
+            <el-col :span="6" :offset="12">
+              <div class="dropBox">
+                <el-dropdown>
+                  <el-button>
+                    用户设置<i class="el-icon-arrow-down el-icon--right"></i>
+                  </el-button>
+                  <el-dropdown-menu slot="dropdown">
+                    <el-dropdown-item>密码重置</el-dropdown-item>
+                    <el-dropdown-item>客户编辑</el-dropdown-item>
+                    <el-dropdown-item>安全退出</el-dropdown-item>
+                  </el-dropdown-menu>
+                </el-dropdown>
+              </div>
+              
+            </el-col>
+
+          </el-row>
+          
+          
         </div>
         
       </header>
@@ -44,13 +68,19 @@ export default {
           padding: 0 20px;
           
 
-          a {  
-            display: block;
+          .header-title {  
+            display: inline-block;
             height: 80px;
             line-height: 80px;
             font-size: 24px;
             text-decoration: none;
             color: #333;
+          }
+
+          .dropBox {
+            padding: 20px;
+            overflow: hidden;
+            float: right;
           }
         }
         
