@@ -104,16 +104,29 @@
         </el-col>
 
         <el-col :span="12">
-          <Page :page="page"></Page>
-        </el-col>
-      </el-row>
+          <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page="page.currentPage"
+            :page-sizes="page.pageSizes"
+            :page-size="page.pageSize"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="tableData.length">
+          </el-pagination>
+
+            <!-- <div class="total-page">
+                共<span>{{ page.dataSum }}</span>条数据
+                共<span>{{ page.pageSum }}</span>页
+            </div> -->
+          </el-col>
+        </el-row>
+        
+      </div>
       
     </div>
-    
-  </div>
-</template>
+  </template>
 
-<script>
+  <script>
 import Page from '@/base/Page'
 
 export default {
@@ -124,7 +137,7 @@ export default {
   },
   data(){
     return {
-      tableData3: [
+      tableData: [
         {
           date: '2018-10-01',
           name: '郑钧',
@@ -167,16 +180,27 @@ export default {
           age: 27,
           state: '预约',
         },
-      ]
+      ],
+      currentPage: 1,
+      pageSize: 5,
+      pageSizes: 5
     }
   },
   watch:{},
   computed:{
-    page () {
+    page () { // 传递数据给 分页器
       let page = {};
-      page.dataSum = this.tableData3.length;
-      page.pageSum = Math.ceil(this.tableData3.length / 6);
+      page.dataSum = this.tableData.length;// 数据长度
+      page.currentPage = 1;
+      page.pageSizes = [5,10,20,50];
+      page.pageSize = 5;
       return page;
+    },
+    tableData3 () { // 显示每页数据
+      let startIndex = (this.currentPage - 1)*this.pageSize;
+      let endIndex = this.currentPage*this.pageSize;
+      let tableData3 = this.tableData.slice(startIndex,endIndex);
+      return tableData3;
     }
   },
   methods:{
@@ -200,9 +224,20 @@ export default {
             message: '已取消删除'
           });          
         });  
-    }
+    },
+    handleSizeChange(val) { // 改变每一页显示的条数
+        //console.log(`每页 ${val} 条`);
+        this.pageSize = val;
+    },
+    handleCurrentChange(val) { // 改变哪一页
+      //console.log(`当前页: ${val}`);
+      this.currentPage = val;
+    },
+    
   },
-  created(){},
+  created(){
+
+  },
   mounted(){}
 }
 </script>

@@ -1,17 +1,7 @@
 .<template>
   <div class="page-wrapper">
     
-    <el-pagination
-    class="pagination"
-    background
-    layout="prev, pager, next"
-    :total="10">
-    </el-pagination>
-
-    <div class="total-page">
-        共<span>{{ page.dataSum }}</span>条数据
-        共<span>{{ page.pageSum }}</span>页
-    </div>
+    
     
   </div>
 </template>
@@ -26,11 +16,19 @@ export default {
   },
   data(){
     return {
+        
     }
   },
   watch:{},
   computed:{},
-  methods:{},
+  methods:{
+      handleSizeChange(val) {
+        console.log(`每页 ${val} 条`);
+      },
+      handleCurrentChange(val) {
+        console.log(`当前页: ${val}`);
+      }
+  },
   created(){},
   mounted(){}
 }
