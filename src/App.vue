@@ -8,7 +8,12 @@
 
       <el-col class="content-container" :span="20">
         <div class="content">
-          <router-view></router-view>
+          <transition name="fadeIn">
+            <keep-alive>
+              <router-view></router-view>
+            </keep-alive>
+          </transition>
+          
         </div>
         
       </el-col>
@@ -31,6 +36,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.fadeIn-enter {
+  opacity: 0;
+}
+
+.fadeIn-enter-active {
+  transition: all 1s linear;
+}
+
+.fadeIn-leave-active {
+  opacity: 0;
+}
+
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

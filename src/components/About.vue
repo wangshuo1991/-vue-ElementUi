@@ -35,18 +35,11 @@
 
 <script>
 export default {
-  components:{},
-  props:{},
   data(){
     return {
       activeName: '1'
     }
-  },
-  watch:{},
-  computed:{},
-  methods:{},
-  created(){},
-  mounted(){}
+  }
 }
 </script>
 <style lang="scss" scoped>

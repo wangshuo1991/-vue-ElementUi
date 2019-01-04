@@ -1,6 +1,6 @@
 .<template>
   <div class="edit-wrapper">
-      客户编辑
+      <h2 class="info-title">客户编辑</h2>
   </div>
 </template>
 
