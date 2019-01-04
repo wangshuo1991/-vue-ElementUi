@@ -242,7 +242,6 @@ export default {
         color: #9f9f9f;
         font-size: 14px;
         margin-bottom: 22px;
-
     }
 
 }

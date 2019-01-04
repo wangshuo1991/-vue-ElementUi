@@ -107,42 +107,43 @@
     <div class="page-container">
       <el-row :gutter="20">
 
-        <!-- 这里是 ‘导出execl’ 按钮 -->
-        <el-col :span="6">
-           <el-tooltip 
-           class="item" 
-           effect="dark" 
-           content="保存到本地" 
-           placement="bottom">
+          <!-- 这里是 ‘导出execl’ 按钮 -->
+          <el-col :span="6">
+              <el-tooltip 
+              class="item" 
+              effect="dark" 
+              content="保存到本地" 
+              placement="bottom">
 
-            <el-button 
-            icon="el-icon-download"
-            size="small"
-            type="primary">
-            导出Excel
-            </el-button>
+              <el-button 
+              icon="el-icon-download"
+              size="small"
+              type="primary">
+              导出Excel
+              </el-button>
 
-           </el-tooltip>
-          
-        </el-col>
-        
-        <!-- 这里是 分页器 -->
-        <el-col :span="12">
-          <el-pagination
-            @size-change="handleSizeChange"
-            @current-change="handleCurrentChange"
-            :current-page="page.currentPage"
-            :page-sizes="page.pageSizes"
-            :page-size="page.pageSize"
-            layout="total, sizes, prev, pager, next, jumper"
-            :total="tableData.length">
-          </el-pagination>
+              </el-tooltip>
+            
           </el-col>
-        </el-row>
-        
-      </div>
+          
+          <!-- 这里是 分页器 -->
+          <el-col :span="12">
+            <el-pagination
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+              :current-page="page.currentPage"
+              :page-sizes="page.pageSizes"
+              :page-size="page.pageSize"
+              layout="total, sizes, prev, pager, next, jumper"
+              :total="tableData.length">
+            </el-pagination>
+          </el-col>
+          
+      </el-row>
       
     </div>
+      
+  </div>
 
   </template>
 
