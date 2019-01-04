@@ -127,11 +127,11 @@
   </template>
 
   <script>
-import Page from '@/base/Page'
+
 
 export default {
   components:{
-    Page
+    
   },
   props:{
   },
@@ -180,6 +180,20 @@ export default {
           age: 27,
           state: '预约',
         },
+        {
+          date: '2018-11-01',
+          name: '苏定方',
+          gender: '男',
+          age: 45,
+          state: '预约',
+        },
+        {
+          date: '2018-11-15',
+          name: '李靖',
+          gender: '男',
+          age: 59,
+          state: '未预约',
+        }
       ],
       currentPage: 1,
       pageSize: 5,
