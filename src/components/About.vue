@@ -1,9 +1,7 @@
 .<template>
   <div class="about-wrapper">
-      <h2 class="info-title">体检须知</h2>
-      <p class="tip-text">
-        <span>温馨提示：</span> <span>请仔细查看注意事项,做好相应的检前准备</span>
-      </p>
+      <Title :titleSetting="titleSetting"></Title>
+      
       <el-collapse v-model="activeName" accordion>
         <el-collapse-item title="体检前" name="1">
           <ul>
@@ -34,23 +32,25 @@
 </template>
 
 <script>
+import Title from '@/base/Title.vue'
+
 export default {
   data(){
     return {
-      activeName: '1'
+      activeName: '1',
+      titleSetting: {
+        title: '体检须知',
+        tips: '请仔细查看注意事项,做好相应的检前准备'
+      }
     }
+  },
+  components: {
+    Title
   }
 }
 </script>
 <style lang="scss" scoped>
 .about-wrapper {
-
-  .tip-text {
-    padding: 20px 0;
-    font-size: 14px;
-    color: #898989;
-  }
-
 
   ul {
     li {

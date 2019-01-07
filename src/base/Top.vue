@@ -17,8 +17,6 @@
                     用户设置<i class="el-icon-arrow-down el-icon--right"></i>
                   </el-button>
                   <el-dropdown-menu slot="dropdown">
-                    <el-dropdown-item>密码重置</el-dropdown-item>
-                    <el-dropdown-item>客户编辑</el-dropdown-item>
                     <el-dropdown-item>安全退出</el-dropdown-item>
                   </el-dropdown-menu>
                 </el-dropdown>

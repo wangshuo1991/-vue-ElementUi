@@ -1,6 +1,6 @@
 <template>
   <div class="info">
-    <h2 class="info-title">人员信息</h2>
+    <Title :titleSetting="titleSetting"></Title>
 
     <!-- 这里是 table 信息列表 -->
     <el-table
@@ -153,11 +153,11 @@
   </template>
 
   <script>
-
+import Title from '@/base/Title.vue'
 
 export default {
   components:{
-    
+    Title
   },
   props:{
   },
@@ -167,7 +167,11 @@ export default {
       pageSize: 5,
       pageSizes: 5,
       search: '',
-      pageIndex: 1
+      pageIndex: 1,
+      titleSetting: {
+        title: '人员信息',
+        tips: ''
+      }
     }
   },
   watch:{
@@ -203,7 +207,7 @@ export default {
   },
   methods:{
     handleEidt (index, row) { // 点击编辑按钮 进行路由跳转
-      let id = parseInt(row.id);
+      let id = '' + row.id;
       this.$router.push({name: 'detail',params: {id: id}});
     },
     handleDelete (index,row) { // 点击删除按钮

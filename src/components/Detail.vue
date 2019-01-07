@@ -1,6 +1,7 @@
 .<template>
   <div class="detail-container">
-      <h2 class="info-title">编辑信息</h2>
+      <Title :titleSetting="titleSetting"></Title>
+      
       <el-row :gutter="20" class="detail">
         <el-col :span="8"> 
           <el-form ref="form" :rules="rules" :model="form" label-width="80px">
@@ -65,8 +66,12 @@
 </template>
 
 <script>
+import Title from '@/base/Title.vue'
+
 export default {
-  components:{},
+  components:{
+      Title
+  },
   props:{},
   data(){
     return {
@@ -129,7 +134,11 @@ export default {
                     }
                 ]
             }
-        ]
+        ],
+        titleSetting: {
+            title: '编辑信息',
+            tips: ''
+        }
     }
   },
   watch:{},

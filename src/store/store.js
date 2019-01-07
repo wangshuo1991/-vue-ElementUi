@@ -92,9 +92,7 @@ const store = new Vuex.Store({
     mutations: {
 
     },
-    getters: {
-        
-    }
+    getters: {}
 });
 
 export default store;

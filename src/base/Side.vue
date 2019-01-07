@@ -31,14 +31,9 @@
           <span slot="title">客服帮助</span>
         </el-menu-item>
 
-        <el-menu-item index="/editclient">
-          <i class="el-icon-star-off"></i>
-          <span slot="title">客户编辑</span>
-        </el-menu-item>
-
-        <el-menu-item index="/changepassword">
+        <el-menu-item index="/setting">
           <i class="el-icon-setting"></i>
-          <span slot="title">修改密码</span>
+          <span slot="title">常规设置</span>
         </el-menu-item>
     </el-menu>
   </div>

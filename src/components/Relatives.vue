@@ -1,16 +1,23 @@
 .<template>
   <div class="wrapper">
-      <h2 class="info-title">亲属预约</h2>
+      <Title :titleSetting="titleSetting"></Title>
   </div>
 </template>
 
 <script>
+import Title from '@/base/Title.vue'
+
 export default {
-  components:{},
+  components:{
+    Title
+  },
   props:{},
   data(){
     return {
-
+      titleSetting: {
+        title: '编辑信息',
+        tips: ''
+      }
     }
   },
   watch:{},

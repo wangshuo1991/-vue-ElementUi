@@ -6,8 +6,7 @@ import Check from '@/components/Check'
 import Relatives from '@/components/Relatives'
 import About from '@/components/About'
 import Service from '@/components/Service'
-import EditClient from '@/components/EditClient'
-import ChangePassword from '@/components/ChangePassword'
+import Setting from '@/components/Setting'
 
 Vue.use(Router)
 
@@ -44,14 +43,9 @@ export default new Router({
       name: 'service'
     },
     {
-      path: '/editclient',
-      component: EditClient,
-      name: 'editclient'
-    },
-    {
-      path: '/changepassword',
-      component: ChangePassword,
-      name: 'changepassword'
+      path: '/setting',
+      component: Setting,
+      name: 'setting'
     },
     {
       path: '/',
