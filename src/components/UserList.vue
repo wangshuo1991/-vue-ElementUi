@@ -140,7 +140,7 @@
               :page-sizes="page.pageSizes"
               :page-size="page.pageSize"
               layout="total, sizes, prev, pager, next, jumper"
-              :total="tableData.length">
+              :total="formData.length">
             </el-pagination>
           </el-col>
           
@@ -163,88 +163,6 @@ export default {
   },
   data(){
     return {
-      tableData: [
-        {
-          date: '2018-10-01',
-          id: '410121197802214512',
-          name: '郑钧',
-          gender: '男',
-          phone: '13245678912',
-          age: 35,
-          state: '未预约',
-          shop: '上海徐汇分院'
-        },
-        {
-          date: '2018-09-26',
-          name: '刘芸',
-          id: '210001199209142010',
-          gender: '女',
-          phone: '17849877892',
-          age: 24,
-          state: '预约',
-          shop: '上海浦东一院'
-        },
-        {
-          date: '2018-09-19',
-          name: '华少',
-          id: '512101198712010112',
-          gender: '男',
-          phone: '15603801248',
-          age: 42,
-          state: '未预约',
-          shop: '上海卢湾分院'
-        },
-        {
-          date: '2018-09-09',
-          name: '权志龙',
-          id: '410111198802161212',
-          gender: '男',
-          phone: '18210467892',
-          age: 29,
-          state: '未预约',
-          shop: '上海徐汇分院'
-        },
-        {
-          date: '2018-08-29',
-          name: '璐璐',
-          id: '602101198904061208',
-          gender: '女',
-          phone: '13812690124',
-          age: 20,
-          state: '未预约',
-          shop: '上海虹桥分院'
-        },
-        {
-          date: '2018-10-01',
-          name: '武媚娘',
-          id: '810001199212122010',
-          gender: '女',
-          phone: '15021789562',
-          age: 27,
-          state: '预约',
-          shop: '上海宝山分院'
-        },
-        {
-          date: '2018-11-01',
-          name: '苏定方',
-          id: '410001199909142010',
-          gender: '男',
-          phone: '17912456974',
-          age: 45,
-          state: '预约',
-          shop: '深圳宝安分院'
-        },
-        {
-          date: '2018-11-15',
-          name: '李靖',
-          id: '310001197809142010',
-          gender: '男',
-          phone: '18974582936',
-          age: 59,
-          state: '未预约',
-          shop: '北京朝阳分院'
-        }
-      ],
       currentPage: 1,
       pageSize: 5,
       pageSizes: 5,
@@ -260,21 +178,24 @@ export default {
   computed:{
     page () { // 传递数据给 分页器
       let page = {};
-      page.dataSum = this.tableData.length;// 数据长度
+      page.dataSum = this.formData.length;// 数据长度
       page.currentPage = 1;
       page.pageSizes = [5,10,20,50];
       page.pageSize = 5;
       return page;
     },
+    formData () {
+      return this.$store.state.tableData
+    },
     tableData3 () { // 显示每页数据  根据搜索显示数据  有搜索的时候 根据搜索内容显示  没有搜索的时候 就分页
       if (this.search) {
-        return this.tableData.filter(item=>{
+        return this.formData.filter(item=>{
           return item.name.toLowerCase().includes(this.search.toLowerCase());
         });
       } else {
         let startIndex = (this.currentPage - 1)*this.pageSize;
         let endIndex = this.currentPage*this.pageSize;
-        let tableData3 = this.tableData.slice(startIndex,endIndex);
+        let tableData3 = this.formData.slice(startIndex,endIndex);
         return tableData3;
       } 
       
@@ -282,7 +203,8 @@ export default {
   },
   methods:{
     handleEidt (index, row) { // 点击编辑按钮 进行路由跳转
-      this.$router.push({name: 'detail',params: {id: index}});
+      let id = parseInt(row.id);
+      this.$router.push({name: 'detail',params: {id: id}});
     },
     handleDelete (index,row) { // 点击删除按钮
        this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
@@ -310,12 +232,12 @@ export default {
       //console.log(`当前页: ${val}`);
       this.currentPage = val;
     },
-    tableDataFilter () {
+    /* tableDataFilter () {  // 这个方法是单纯的 搜索筛选的方法  需要配合分页使用  在计算属性中使用
       let data = this.tableData.filter(item=>{
         return !this.search || item.name.toLowerCase().includes(this.search.toLowerCase());
       });
       return data;
-    }
+    } */
     
   },
   created(){
