@@ -62,8 +62,13 @@
 
       </el-table-column>
       <el-table-column
-        prop="action"
-        label="操作">
+        align="left">
+        <template slot="header" slot-scope="scope">
+          <el-input
+            v-model="search"
+            size="mini"
+            placeholder="输入关键字搜索"/>
+        </template>
         <template slot-scope="scope">
 
           <el-tooltip 
@@ -131,7 +136,7 @@
             <el-pagination
               @size-change="handleSizeChange"
               @current-change="handleCurrentChange"
-              :current-page="page.currentPage"
+              :current-page="pageIndex"
               :page-sizes="page.pageSizes"
               :page-size="page.pageSize"
               layout="total, sizes, prev, pager, next, jumper"
@@ -242,10 +247,16 @@ export default {
       ],
       currentPage: 1,
       pageSize: 5,
-      pageSizes: 5
+      pageSizes: 5,
+      search: '',
+      pageIndex: 1
     }
   },
-  watch:{},
+  watch:{
+    tableData3 () {
+      this.pageIndex = 1;
+    }
+  },
   computed:{
     page () { // 传递数据给 分页器
       let page = {};
@@ -255,11 +266,18 @@ export default {
       page.pageSize = 5;
       return page;
     },
-    tableData3 () { // 显示每页数据
-      let startIndex = (this.currentPage - 1)*this.pageSize;
-      let endIndex = this.currentPage*this.pageSize;
-      let tableData3 = this.tableData.slice(startIndex,endIndex);
-      return tableData3;
+    tableData3 () { // 显示每页数据  根据搜索显示数据  有搜索的时候 根据搜索内容显示  没有搜索的时候 就分页
+      if (this.search) {
+        return this.tableData.filter(item=>{
+          return item.name.toLowerCase().includes(this.search.toLowerCase());
+        });
+      } else {
+        let startIndex = (this.currentPage - 1)*this.pageSize;
+        let endIndex = this.currentPage*this.pageSize;
+        let tableData3 = this.tableData.slice(startIndex,endIndex);
+        return tableData3;
+      } 
+      
     }
   },
   methods:{
@@ -292,6 +310,12 @@ export default {
       //console.log(`当前页: ${val}`);
       this.currentPage = val;
     },
+    tableDataFilter () {
+      let data = this.tableData.filter(item=>{
+        return !this.search || item.name.toLowerCase().includes(this.search.toLowerCase());
+      });
+      return data;
+    }
     
   },
   created(){

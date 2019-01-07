@@ -9,9 +9,9 @@
       <el-col class="content-container" :span="20">
         <div class="content">
           <transition name="fadeIn">
-            <keep-alive>
+            
               <router-view></router-view>
-            </keep-alive>
+            
           </transition>
           
         </div>
