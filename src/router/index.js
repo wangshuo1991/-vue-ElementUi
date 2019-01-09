@@ -7,6 +7,7 @@ import Relatives from '@/components/Relatives'
 import About from '@/components/About'
 import Service from '@/components/Service'
 import Setting from '@/components/Setting'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/setting',
       component: Setting,
       name: 'setting'
+    },
+    {
+      path: '/login',
+      component: Login,
+      name: 'login'
     },
     {
       path: '/',

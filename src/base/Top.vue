@@ -4,13 +4,13 @@
         <div class="mid-header">
           <el-row :gutter="20">
 
-            <el-col :span="6">
+            <el-col :span="10">
               <a class="header-title" href="#">
                 {{ headerTitle }}
               </a>
             </el-col>
 
-            <el-col :span="6" :offset="12">
+            <el-col :span="6" :offset="8" v-if="$route.path!='/login'">
               <div class="dropBox">
                 <el-dropdown>
                   <el-button>
@@ -39,7 +39,7 @@ export default {
   props:{
     headerTitle: {
       type: String,
-      default: 'Vue Admin Systerm'
+      default: 'Health Reservation Platform For Enterprise'
     }
   },
   data(){

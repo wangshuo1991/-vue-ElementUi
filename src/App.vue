@@ -2,7 +2,7 @@
   <div id="app">
     <Top></Top>
     <el-row class="container" width="100%">
-      <el-col class="side-container">
+      <el-col class="side-container" v-if="$route.path!='/login'">
         <Side></Side>
       </el-col>
 
