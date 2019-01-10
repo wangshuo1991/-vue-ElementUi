@@ -8,7 +8,7 @@
         <div class="form-outer">
           <Title :titleSetting="titleSetting"></Title>
           <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="60px" class="demo-ruleForm">
-            <el-form-item label="账户" prop="pass">
+            <el-form-item label="账户" prop="username">
               <el-input type="text" v-model="ruleForm2.username" placeholder="请输入您的帐号">
                  <i slot="suffix" class="el-input__icon el-icon-date"></i>
               </el-input>
@@ -19,7 +19,7 @@
               </el-input>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" @click="submitForm('ruleForm2')">登录</el-button>
+              <el-button type="primary" @click.enter="submitForm('ruleForm2')">登录</el-button>
               <a href="#" class="forget-pass">忘记密码?</a>
             </el-form-item>
           </el-form>
@@ -65,8 +65,13 @@ export default {
   watch:{},
   computed:{},
   methods:{
-    submitFor () {
-
+    submitForm (targetForm) { 
+      this.$refs[targetForm].validate((valid)=>{ // 登录验证
+        if (valid) {
+          console.log('success');
+          this.$router.replace('/userlist');
+        }
+      });
     }
   },
   created(){},

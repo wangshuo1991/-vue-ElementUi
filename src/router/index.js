@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Vuex from '../store/store'
 import UserList from '@/components/UserList'
 import Detail from '@/components/Detail'
 import Check from '@/components/Check'
@@ -11,7 +12,10 @@ import Login from '@/components/Login'
 
 Vue.use(Router)
 
-export default new Router({
+Vue.use(Vuex)
+
+
+const router = new Router({
   routes: [
     {
       path: '/userlist',
@@ -55,8 +59,29 @@ export default new Router({
     },
     {
       path: '/',
-      redirect: '/userlist',
+      redirect: '/login'
     }
   ],
   mode: 'history'
-})
+});
+
+/* // 全局导航守卫
+router.beforeEach((to, from, next) => {
+
+  console.log('开始守卫');
+  let loginState = Vuex.state.isLogin;
+  if (loginState) {
+    console.log('success');
+    
+    next({path: '/userlist'})
+  } else {
+    console.log('failed');
+    next();
+  }
+  
+  
+
+}) */
+
+export default router;
+

@@ -87,7 +87,8 @@ const store = new Vuex.Store({
             state: '未预约',
             shop: '北京朝阳分院'
             }
-        ]
+        ],
+        isLogin: true
     },
     mutations: {
 
