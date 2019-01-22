@@ -2,8 +2,16 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/login',(req,res)=>{
-    res.send('login');
+let data = require('../../dataJson.json');
+let userlist = data.tableData;
+
+
+
+router.get('/user', function (req, res) {
+	res.json({
+        code: 0,
+        data: userlist
+    });
 });
 
 module.exports = router;

@@ -145,7 +145,6 @@
           </el-col>
           
       </el-row>
-      
     </div>
       
   </div>
@@ -154,6 +153,7 @@
 
   <script>
 import Title from '@/base/Title.vue'
+import {mapActions} from 'vuex'
 
 export default {
   components:{
@@ -242,10 +242,13 @@ export default {
       });
       return data;
     } */
+
+    // 触发vuex getdata
+    ...mapActions(['getData'])
     
   },
   created(){
-
+    this.getData();
   },
   mounted(){}
 }
