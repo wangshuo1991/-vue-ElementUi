@@ -236,6 +236,7 @@ export default {
       //console.log(`当前页: ${val}`);
       this.currentPage = val;
     },
+    
     /* tableDataFilter () {  // 这个方法是单纯的 搜索筛选的方法  需要配合分页使用  在计算属性中使用
       let data = this.tableData.filter(item=>{
         return !this.search || item.name.toLowerCase().includes(this.search.toLowerCase());
