@@ -20,9 +20,11 @@ app.all('*', function (req, res, next) {
 });
 
 // 使用路由
+
 app.use(router);
 
 // 服务端口
 app.listen(3030,()=>{
     console.log(`server is running on port 3030`);
 });
+
