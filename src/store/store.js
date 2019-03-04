@@ -9,13 +9,22 @@ axios.defaults.baseURL = 'http://localhost:3030';  // 增加默认的请求路�
 const store = new Vuex.Store({
     state: {
         isLogin: true,
-        tableData: []
+        tableData: [],
+        active: 0
     },
     mutations:{
         SETINFO (state, payload) {
-            console.log('payload',payload);
+            //console.log('payload',payload);
             state.tableData = payload;
-            console.log('state',state.tableData);
+            //console.log('state',state.tableData);
+        },
+        increment (state) {
+            if(state.active>=4) return;
+            state.active++;
+        },
+        decrement (state) {
+            if(state.active<=0) return;
+            state.active--;
         }
     },
     actions: {
