@@ -11,7 +11,6 @@ import Setting from '@/components/Setting'
 import Login from '@/components/Login'
 
 Vue.use(Router)
-
 Vue.use(Vuex)
 
 
