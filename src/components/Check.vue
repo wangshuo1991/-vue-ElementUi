@@ -15,10 +15,12 @@
 
       <div class="package-container">
 
-
-
           <Steps1 v-if="$store.state.active === 0"></Steps1>
+          <Steps2 v-else-if="$store.state.active === 1"></Steps2>
+          <Steps3 v-else-if="$store.state.active === 2"></Steps3>
+          <Steps4 v-else></Steps4>
           <Step></Step>
+
       </div>
       
   </div>
@@ -28,11 +30,17 @@
 import Title from '@/base/Title.vue'
 import Step from '@/base/Step.vue'
 import Steps1 from '@/components/Steps1.vue'
+import Steps2 from '@/components/Steps2.vue'
+import Steps3 from '@/components/Steps3.vue'
+import Steps4 from '@/components/Steps4.vue'
 
 export default {
   components:{
     Title,
     Steps1,
+    Steps2,
+    Steps3,
+    Steps4,
     Step
   },
   props:{},
