@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-      <el-row>
-          <el-col :span="20" :offset="2">
+        <el-row>
+            <el-col :span="20" :offset="2">
             <el-collapse v-model="activeNames" accordion>
                 <el-collapse-item name="1">
                     <template slot="title">
@@ -33,9 +33,14 @@
                     <div></div>
                 </el-collapse-item>       
             </el-collapse>
-          </el-col>
-      </el-row>
-        
+            </el-col>
+        </el-row>
+        <el-row :gutter="20" class="align-right">
+            <el-col :span="6" :offset="18">
+                <el-button align="right" type="primary" @click="reset">重新预约</el-button>
+                <el-button align="right" type="success" @click="save">保存提交</el-button>
+            </el-col>
+        </el-row>
   </div>
 </template>
 
@@ -44,6 +49,16 @@ export default {
   data(){
     return {
       activeNames: ['1']
+    }
+  },
+  methods: {
+    save () {
+      
+    },
+
+    reset () {
+        this.$store.commit('clearTemp');
+        this.$store.commit('goBack');
     }
   }
 }

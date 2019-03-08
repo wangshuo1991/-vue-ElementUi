@@ -1,11 +1,11 @@
 <template>
   <div class="wrapper">
-      <el-form ref="form" :model="form" :rules="rules" label-width="150px">
+      <el-form ref="form3" :model="form3" :rules="rules" label-width="150px">
         <el-form-item label="选择日期" required>
             <el-col :span="5">
                 <el-form-item prop="date1">
                     <el-date-picker
-                    v-model="deadline"
+                    v-model="form3.deadline"
                     type="daterange"
                     range-separator="至"
                     start-placeholder="开始日期"
@@ -16,13 +16,20 @@
         </el-form-item>
         <el-form-item label="选择门店" required>
             <el-cascader
-            placeholder="试试搜索，比如徐汇"
-            change-on-select
-            :options="options"
-            v-model="selectedOptions2"
-            @change="handleChange"
-            filterable>
-        </el-cascader>
+              placeholder="试试搜索，比如徐汇"
+              change-on-select
+              :options="options"
+              v-model="form3.selectedOptions2"
+              @change="handleChange"
+              filterable>
+          </el-cascader>
+        </el-form-item>
+        <el-form-item>
+          <el-row :gutter="20" class="align-right">
+              <el-col :span="6" :offset="18">
+                  <el-button align="right" type="primary" @click="next('form3')">下一步</el-button>
+              </el-col>
+          </el-row>
         </el-form-item>
       </el-form>  
   </div>
@@ -36,11 +43,10 @@ export default {
   props:{},
   data(){
     return {
-      form: {
-        date1: '',
+      form3: {
+        deadline: '',
+        selectedOptions2: []
       },
-      deadline: ''
-      ,
       rules: {},
       options: [
         {
@@ -73,13 +79,20 @@ export default {
           ]
         }
         
-      ],
-      selectedOptions2: []
+      ]
     }
   },
   methods: {
       handleChange(){
 
+      },
+      next (formName) {
+        this.$refs[formName].validate((valid)=>{
+          if (valid) {
+            this.$store.commit('increment');
+            this.$store.commit('appendTemp',this.form3)
+          } 
+        }) 
       }
   }
 }

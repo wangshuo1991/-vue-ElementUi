@@ -10,21 +10,25 @@ const store = new Vuex.Store({
     state: {
         isLogin: true,
         tableData: [],
-        active: 0
+        active: 0,
+        temp: []
     },
     mutations:{
         SETINFO (state, payload) {
-            //console.log('payload',payload);
-            state.tableData = payload;
-            //console.log('state',state.tableData);
+            state.tableData = payload;     
         },
-        increment (state) {
-            if(state.active>=4) return;
+        increment (state) { // 下一步 active加一
+            if(state.active>=3) return;
             state.active++;
         },
-        decrement (state) {
-            if(state.active<=0) return;
-            state.active--;
+        appendTemp (state,data) {
+            state.temp.push(data);
+        },
+        clearTemp (state) {
+            state.temp = [];
+        },
+        goBack (state) {
+            state.active = 0;
         }
     },
     actions: {
