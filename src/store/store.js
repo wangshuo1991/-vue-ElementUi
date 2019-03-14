@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import Vuex from 'vuex'
+import createPersistedState from "vuex-persistedstate"
 
 Vue.use(Vuex)
 
@@ -13,6 +14,10 @@ const store = new Vuex.Store({
         active: 0,
         temp: []
     },
+    plugins: [createPersistedState({
+        storage: window.sessionStorage
+    })]
+    ,
     mutations:{
         SETINFO (state, payload) {
             state.tableData = payload;     
