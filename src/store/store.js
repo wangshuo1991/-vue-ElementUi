@@ -16,7 +16,7 @@ const store = new Vuex.Store({
     },
     plugins: [createPersistedState({
         storage: window.sessionStorage
-    })]
+    })] 
     ,
     mutations:{
         SETINFO (state, payload) {
